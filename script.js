@@ -37,85 +37,52 @@ function displayQuote() {
 displayQuote();
 
 // Toggle navbar visibility on mobile
+// Select the elements
+// Get the menu toggle button, navigation list, and body
 const menuToggle = document.querySelector('.menu-toggle');
 const navList = document.querySelector('nav ul');
+const body = document.body;
 
+// Function to toggle the visibility of the navbar
 menuToggle.addEventListener('click', () => {
-    navList.classList.toggle('active');
-    const isActive = navList.classList.contains('active');
-    menuToggle.textContent = isActive ? '✖' : '☰';
+    navList.classList.toggle('active'); // Toggle the 'active' class to show/hide the navbar
+
+    // Toggle the 'menu-active' class on the body to add padding-top when the menu is active
+    body.classList.toggle('menu-active');
 });
+
+// Close the menu when a link is clicked on mobile
+const menuLinks = document.querySelectorAll('nav ul li a');
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navList.classList.remove('active'); // Close the menu
+        body.classList.remove('menu-active'); // Remove padding when menu is closed
+    });
+});
+
+
+// Add any additional JavaScript functionality here (like the image slider or quotes)
+
 
 // Recommendations section
 const recommendations = [
-    {
-        name: "Isha",
-        message: "Irfan Study Circl helped me improve my grades dramatically!"
-    },
-    {
-        name: "Samiksha",
-        message: "The tutors are very knowledgeable and supportive!"
-    },
-    {
-        name: "Mohit",
-        message: "I loved the interactive classes and the friendly environment!"
-    },
-    {
-        name: "Aditya",
-        message: "The study materials provided are excellent!"
-    },
-    {
-        name: "Ayush",
-        message: "I highly recommend Irfan Study Circl for anyone looking to excel!"
-    },
-    {
-        name: "Shruti",
-        message: "Where learning is fun, friendships are built, and your future begins!"
-    },
-    {
-        name: "Disha",
-        message: "The chase to better learning will take you to better marks."
-    },
-    {
-        name: "Nafiza",
-        message: "Where learning is fun, friendships are built, and your future begins!"
-    },
-    {
-        name: "Himani",
-        message: "A hub of excellence where learning leads to success and dreams become reality."
-    },
-    {
-        name: "Rashmi",
-        message: "The light of knowledge will reflect in your personality."
-    },
-    {
-        name: "Kamil",
-        message: "At ISC, learning feels interactive, and questions are always encouraged!"
-    },
-    {
-        name: "Arushi",
-        message: "Where you take your first step towards deep learning and a radiant future."
-    },
-    {
-        name: "Diya",
-        message: "A good tutor can bring the real fire that's hidden in a student's heart."
-    },
-    {
-        name: "Tushar",
-        message: "A good education can change anyone. A good teacher can change everything!"
-    },
-    {
-        name: "Jigyasa",
-        message: "The dreams of achieving high scores become realistic with great guidance here!"
-    },
-    {
-        name: "Ashwat",
-        message: "Crack the Success Code with ISC."
-    },
-    {
-        name: "Rashmi",
-        message: "Your enthusiasm is contagious! The classroom comes alive because of you!"
-    },
+    {name: "Isha",message: "Irfan Study Circle helped me improve my grades dramatically!"},
+    {name: "Samiksha",message: "The tutors are very knowledgeable and supportive!"},
+    {name: "Mohit",message: "I loved the interactive classes and the friendly environment!"},
+    {name: "Aditya",message: "The study materials provided are excellent!"},
+    {name: "Ayush",message: "I highly recommend Irfan Study Circle for anyone looking to excel!"},
+    {name: "Shruti",message: "Where learning is fun, friendships are built, and your future begins!"},
+    {name: "Disha",message: "The chase to better learning will take you to better marks."},
+    {name: "Naina",message: "Where learning is fun, friendships are built, and your future begins!"},
+    {name: "Himanshu",message: "A hub of excellence where learning leads to success and dreams become reality."},
+    {name: "Rashmi",message: "The light of knowledge will reflect in your personality."},
+    {name: "Kamil",message: "At ISC, learning feels interactive, and questions are always encouraged!"},
+    {name: "Arushi",message: "Where you take your first step towards deep learning and a radiant future."},
+    {name: "Diya",message: "A good tutor can bring the real fire that's hidden in a student's heart."},
+    {name: "Tushar",message: "A good education can change anyone. A good teacher can change everything!"},
+    {name: "Jigyasa",message: "The dreams of achieving high scores become realistic with great guidance here!"},
+    {name: "Aditya",message: "Crack the Success Code with ISC."},
+    {name: "Rashmi",message: "Your enthusiasm is contagious! The classroom comes alive because of you!"},
 ];
 
 
@@ -146,3 +113,4 @@ document.getElementById('prevBtn').addEventListener('click', () => {
     recommendationIndex = (recommendationIndex - 1 + recommendations.length) % recommendations.length;
     displayRecommendation();
 });
+

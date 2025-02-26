@@ -470,3 +470,17 @@ iframe {
         border-radius: 5px; /* Adjust border radius for smaller screens */
     }
 }
+
+/* Add this CSS for the footer content */
+footer p {
+    color: white; /* Makes the text white */
+}
+
+footer p a {
+    color: white; /* Makes the link text white */
+    text-decoration: none; /* Removes underline */
+}
+
+footer p a:hover {
+    color: #f39c12; /* Adds a hover effect, change color when the user hovers over the link */
+}
