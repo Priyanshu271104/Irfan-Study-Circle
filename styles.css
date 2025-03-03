@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     box-sizing: border-box;
 }
@@ -35,66 +36,101 @@ header {
     margin-bottom: -10px;
 }
 
-nav {
+header nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: #333;
     padding: 10px 20px;
     background: #4CAF50;
+    position: relative; /* Allow positioning of elements */
 }
 
-nav ul {
+/* Navbar List */
+header nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-nav ul li {
-    margin: 0 10px;
+header nav ul li {
+    margin-right: 20px;
 }
 
-nav ul li a {
-    padding: 10px 15px;
-    color: white;
+header nav ul li a {
     text-decoration: none;
-    transition: color 0.3s, transform 0.2s;
+    color: white;
+    font-size: 16px;
 }
 
-nav ul li a:hover {
-    color: #f39c12;
-    transform: scale(1.05);
+/* Hamburger button */
+header nav .menu-toggle {
+    display: block; /* Visible by default */
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: white;
+    position: relative; /* Positioned normally inside the navbar */
+    z-index: 1001; /* Ensure it is above navbar content */
 }
 
-.menu-toggle {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    nav ul {
-        display: none;
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+    /* Navbar list */
+    header nav ul {
         flex-direction: column;
-        position: absolute;
-        top: 50px;
-        left: 0;
-        right: 0;
-        background: #4CAF50;
-        z-index: 10;
+        align-items: flex-start; /* Align items to the left */
+        display: none; /* Hidden by default */
+        width: 100%; /* Full width */
+        padding-left: 0; /* Remove left padding */
+        margin-top: 50px; /* Prevent overlap with hamburger */
     }
 
-    nav ul.active {
+    /* Show the navbar when active */
+    header nav ul.active {
         display: flex;
     }
 
-    .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        z-index: 20;
+    /* Keep hamburger inside navbar initially */
+    header nav .menu-toggle {
+        position: relative;
+        z-index: 100; /* Ensure it is above navbar content */
+    }
+
+    /* Move hamburger above navbar when clicked */
+    header nav ul.active + .menu-toggle {
+        position: absolute; /* Move it above navbar */
+        top: -40px; /* Adjust positioning */
+        left: 20px;
+        z-index: 1001; /* Ensure the hamburger stays above navbar */
+    }
+
+    /* Navbar items for mobile */
+    header nav ul li {
+        margin: 10px 0;
+        text-align: left; /* Align text to the left */
+    }
+
+    /* Additional padding for navbar */
+    header nav {
+        padding: 10px 20px;
     }
 }
+
+/* Hide hamburger button on larger screens */
+@media (min-width: 1025px) {
+    header nav .menu-toggle {
+        display: none; /* Hide the hamburger icon on large screens */
+    }
+
+    header nav ul {
+        display: flex; /* Align navbar items horizontally */
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
 
 /* Hero Section */
 #hero {
@@ -148,7 +184,7 @@ nav ul li a:hover {
 
 .cta {
     display: inline-block;
-    background: #f39c12;
+    background: #4CAF50;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -158,7 +194,7 @@ nav ul li a:hover {
 }
 
 .cta:hover {
-    background: #e67e22;
+    background: #4CAF50;
     transform: scale(1.05);
 }
 
@@ -321,7 +357,7 @@ footer p {
 }
 
 .helpful-links ul li a:hover {
-    color: #e67e22;
+    color: #4CAF50;
 }
 
 .floating-message {
